@@ -1087,10 +1087,6 @@ func readSockaddrFromBuff(buff io.Reader) (map[string]string, error) {
 			return nil, fmt.Errorf("error parsing sockaddr_in: %v", err)
 		}
 		res["sin_addr"] = PrintUint32IP(addr)
-		_, err := readByteSliceFromBuff(buff, 8)
-		if err != nil {
-			return nil, fmt.Errorf("error parsing sockaddr_in: %v", err)
-		}
 	case 10: // AF_INET6
 		/*
 			struct sockaddr_in6 {
